@@ -10,8 +10,8 @@ public static void Criaçãografo() {
     int numeroVertice=0;
 
     System.out.println("Quantos vértices deseja ter? ");
-    numerovertice=sc.nextInt();
-    while (numerovertice<=0) 
+    numeroVertice=sc.nextInt();
+    while (numeroVertice<=0) 
     {   System.out.println("Digite um valor acima de 0 ");
         numeroVertice=sc.nextInt();  
     }
@@ -22,7 +22,8 @@ public static void Criaçãografo() {
     int origem =sc.nextInt();
     int destino =sc.nextInt();
 
-//chamada
+//chamada do aruqivo
+
 
     MatrizAdjCriacao(numeroVertice);
     NomeVertice(numeroVertice);
