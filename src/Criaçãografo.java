@@ -22,7 +22,7 @@ public static void Criaçãografo() {
     int origem =sc.nextInt();
     int destino =sc.nextInt();
 
-
+//chamada
 
     MatrizAdjCriacao(numeroVertice);
     NomeVertice(numeroVertice);
