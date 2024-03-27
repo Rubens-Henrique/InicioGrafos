@@ -20,18 +20,25 @@ public static boolean grafosimples(int[][] matrizAdj)
     }
 
     //testar se o grafo é regular
-    public static boolean grafoRegular(int[][] matrizAdj) 
-{ 
 
-
-
-
-
-}
 
     //testar se o grafo é completo
 
-
+    public static boolean grafoCompleto(int[][] matrizAdj+"RETORNO DO GRAFO SIMPLES") 
+    {   
+        if (grafosimples=true)
+        { for (int i = 0; i < matrizAdj.length; i++) {
+        for (int j = 0; j < matrizAdj[i].length; j++) {
+            if (i != j && matrizAdj[i][j] != 1) {
+                return false;
+            }
+        }
+    }
+    return true;
+    } else {
+    return false; // Se o grafo não for simples, não pode ser completo
+    }
+    }
 
 
 
