@@ -20,7 +20,7 @@ public class App {
 
 
             case(1): 
-            Criaçãografo();
+        
 
             break;
 

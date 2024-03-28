@@ -19,7 +19,7 @@ public class Vertice {
 }
 
 
-    public void AddAresta(origem,destino,tipo)
+    public void AddAresta(origem,destino,int tipo)
     {   if (tipo==1)// tipo nao direcionado 
         { 
             MatrizAdj[origem][destino]=1;
@@ -30,7 +30,7 @@ public class Vertice {
         }
     }
     //Remoção de aresta
-    public void RemoverAresta(origem,destino,tipo)
+    public void RemoverAresta(origem,destino,int tipo)
     {   if (tipo==1)// tipo nao direcionado 
         { 
             MatrizAdj[origem][destino]=0;
@@ -43,11 +43,11 @@ public class Vertice {
     }
 
     //Identificação de vizinhança  QQQ
-    public void Ident(numeroVertice)
+    public void Ident( int numeroVertice, int tipo)
 { 
     int controle=0;
-         for (int controle=0;Matriz<numerovertice;controle ++) {
-               if ( tipo==1 && MatrizAdj[][numerovertice]==1)   // tipo nao direcionado 
+         for (int controle=0;MatrizAdj<numeroVertice;controle ++) {
+               if ( tipo==1 && MatrizAdj[][numeroVertice]==1)   // tipo nao direcionado 
     {                    System.out.println(" +origem+ é vizinho de +destino" );
                                              } 
     

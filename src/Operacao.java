@@ -43,7 +43,7 @@ public static boolean grafosimples(int[][] matrizAdj)
 
 
     //testar se é bipartido 
-    
+    //sera que da pra comitar 
 
 
 
