@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
-public static void Criaçãografo() {
+public class Criaçãografo {
     
+
+public static void Criando () {
     Scanner sc = new Scanner(System.in);
 
 
@@ -26,12 +28,12 @@ public static void Criaçãografo() {
 
 
     MatrizAdjCriacao(numeroVertice);
-    NomeVertice(numeroVertice);
+    NomeVertice(numeroVertice);X
     AddAresta(origem,destino);
 
 
     
-
+}
 
 
 
