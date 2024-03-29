@@ -28,7 +28,7 @@ public static void Criando () {
 
 
     MatrizAdjCriacao(numeroVertice);
-    NomeVertice(numeroVertice);
+    NomeVertice(numeroVertice);X
     AddAresta(origem,destino);
 
 
