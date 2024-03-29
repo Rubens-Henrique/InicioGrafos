@@ -12,35 +12,17 @@ public class Vertice {
  String []nomes = new String[numeroVertice];
     int k=0;
     while (k<numeroVertice) {
-    System.out.printf("Digite o nome do %d vértice ",k);
+    System.out.printf("Digite o nome do %d vértice , ele será associado ao numero %d",k,k);
     nomes[k]=sc.nextLine();
     k++;
     }
 }
 
+public void associação(String nomes[],int matrizadj[][] ) { 
 
-    public void AddAresta(origem,destino,int tipo)
-    {   if (tipo==1)// tipo nao direcionado 
-        { 
-            MatrizAdj[origem][destino]=1;
-            MatrizAdj[destino][origem]=1; //para grafos não direcionados
-     } 
-        else { 
-            MatrizAdj[origem][destino]=1;  // para grafos direcionados 
-        }
-    }
-    //Remoção de aresta
-    public void RemoverAresta(origem,destino,int tipo)
-    {   if (tipo==1)// tipo nao direcionado 
-        { 
-            MatrizAdj[origem][destino]=0;
-            MatrizAdj[destino][origem]=0; //para grafos não direcionados
-     } 
-        else { 
-            MatrizAdj[origem][destino]=0;  // para grafos direcionados 
-        }
 
-    }
+}
+
 
     //Identificação de vizinhança  QQQ
     public void Ident( int numeroVertice, int tipo)
