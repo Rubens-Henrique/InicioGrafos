@@ -91,6 +91,17 @@ public class ListaAdjacencia {
         }
     }
 
+    public boolean Regular() {
+        int grau = obterGrauVertice(0);
+        for (int i = 1; i < numVertices; i++) {
+            if (obterGrauVertice(i) != grau) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
 
 }
