@@ -33,7 +33,7 @@ public class ListaAdjacencia {
         }
     }
 
-    public void adicionarAresta(int v1, int v2) {
+    public void addArestaLista(int v1, int v2) {
         
         // Se o grafo não for direcionado, adiciona também nas listas de adjacência dos vértices
         if (!ehDirecionado) {
@@ -47,7 +47,7 @@ public class ListaAdjacencia {
         }
     }
 
-    public void removerAresta(int v1, int v2) {
+    public void removerArestaLista(int v1, int v2) {
     
         // Se o grafo não for direcionado, remove também das listas de adjacência dos vértices
         if (!ehDirecionado) {
