@@ -1,11 +1,17 @@
+import java.util.Scanner;
+
 public class MatrizAdjCriacao {
     
     private static int[][] matrizadj;
-
+    private static boolean ehDirecionado;
+    private static int numeroVertice;
     // Construtor da classe para inicializar a matriz
-    
-    public MatrizAdjCriacao(int numeroVertice) {
+
+    public MatrizAdjCriacao(int numeroVertice,int tipo) {
         matrizadj = new int[numeroVertice][numeroVertice];
+        ehDirecionado = (tipo == 1);
+        
+
         // Inicializa a matriz com zeros
         for (int i = 0; i < numeroVertice; i++) {
             for (int j = 0; j < numeroVertice; j++) {
@@ -13,10 +19,18 @@ public class MatrizAdjCriacao {
             }
         }
     }
+   public boolean ehDirecionado() {
+        return ehDirecionado;
+    }
+    public int obterNumVertices() {
+        return numeroVertice;
+    }
+    
 
     // Adiciona uma aresta à matriz de adjacência
-    public static void addArestaMatriz(int origem, int destino, int tipo) {
-        if (tipo == 1) {
+    public static void addArestaMatriz(int origem, int destino) {
+        System.out.printf("X %d,  %d\\n",origem,destino);
+        if ( !ehDirecionado) {
             matrizadj[origem][destino] = 1;
             matrizadj[destino][origem] = 1; // para grafos não direcionados
         } else {
@@ -25,8 +39,8 @@ public class MatrizAdjCriacao {
     }
 
     // Remove uma aresta da matriz de adjacência
-    public static void removerArestaMatriz(int origem, int destino, int tipo) {
-        if (tipo == 1) {
+    public static void removerArestaMatriz(int origem, int destino) {
+        if (!ehDirecionado)  {
             matrizadj[origem][destino] = 0;
             matrizadj[destino][origem] = 0; // para grafos não direcionados
         } else {
@@ -34,8 +48,55 @@ public class MatrizAdjCriacao {
         }
     }
 
+
+    public static boolean grafoSimples() 
+    { int numeroVertice = matrizadj.length;
+        for (int i=0;i<numeroVertice ;i++)
+        {   for (int j=0;j<numeroVertice ;j++)
+            if (matrizadj[i][j]>1 || (i==j && matrizadj[i][i]==1))
+                {  return false; } 
+        } 
+        return true; // Grafo é simples
+
+
+    }
+
+    public static void grafoCompleto() {
+        boolean verifica = grafoSimples();
+        if (verifica) {
+            boolean completo = true;
+            for (int i = 0; i < matrizadj.length; i++) {
+                for (int j = 0; j < matrizadj[i].length; j++) {
+                    if (i != j && matrizadj[i][j] != 1) {
+                        completo = false;
+                        break;
+                    }
+                }
+                if (!completo) {
+                    break;
+                }
+            }
+            if (completo) {
+                System.out.println("É um grafo completo");
+            } else {
+                System.out.println("Não é um grafo completo");
+            }
+        } else {
+            System.out.println("Não é um grafo completo"); // Se o grafo não for simples, não pode ser completo
+        }
+    }
+
     // Imprime a matriz
-    public static void imprime(int numeroVertice, String nomes[]) {
+    public static void imprime() {
+        Scanner sc = new Scanner(System.in);
+
+        String []nomes = new String[numeroVertice];
+        int k=0;
+        while (k<numeroVertice) {
+            System.out.printf("Digite o nome do %d vértice , ele será associado ao numero %d",k,k);
+            nomes[k]=sc.nextLine();
+            k++; 
+            
         System.out.print("      ");
         for (String nome : nomes) {
             System.out.printf("%-7s", nome);
@@ -50,4 +111,6 @@ public class MatrizAdjCriacao {
             System.out.println();
         }
     }
+}
+
 }

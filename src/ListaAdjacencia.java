@@ -8,7 +8,7 @@ public class ListaAdjacencia {
     private static List<List<Integer>> predecessores;
     private static List<List<Integer>> sucessores;
 
-    private int numVertices;
+    private static int numVertices;
     private static boolean ehDirecionado;
 
     public ListaAdjacencia(int numVertices, int tipo) {
@@ -47,7 +47,7 @@ public class ListaAdjacencia {
         }
     }
 
-    public void removerArestaLista(int v1, int v2) {
+    public static void removerArestaLista(int v1, int v2) {
     
         // Se o grafo não for direcionado, remove também das listas de adjacência dos vértices
         if (!ehDirecionado) {
@@ -69,21 +69,21 @@ public class ListaAdjacencia {
         return ehDirecionado;
     }
 
-    public List<Integer> obterVizinhos(int v) {
+    public static List<Integer> obterVizinhos(int v) {
     // Como o grafo não é direcionado, retorna a lista de adjacência do vértice
         return listaAdj.get(v);
         
     }
 
-    public List<Integer> obterPredecessores(int v) {
+    public static List<Integer> obterPredecessores(int v) {
         return predecessores.get(v);
     }
 
-    public List<Integer> obterSucessores(int v) {
+    public static List<Integer> obterSucessores(int v) {
         return sucessores.get(v);
     }
 
-    public int obterGrauVertice(int v) {
+    public static int obterGrauVertice(int v) {
         if (ehDirecionado) {
             return predecessores.get(v).size() + sucessores.get(v).size();
         } else {
@@ -91,17 +91,56 @@ public class ListaAdjacencia {
         }
     }
 
-    public boolean Regular() {
+    public static String regular() {
         int grau = obterGrauVertice(0);
         for (int i = 1; i < numVertices; i++) {
             if (obterGrauVertice(i) != grau) {
+                return ("O grafo não é regular ");
+            }
+        }
+        return ("O grafo é regular ");
+    }
+
+    // Método para verificar se o grafo é bipartido
+    public static boolean ehBipartido() {
+        int[] coloracao = new int[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            coloracao[i] = -1;
+        }
+        for (int i = 0; i < numVertices; i++) {
+            if (coloracao[i] == -1) {
+                if (!verificarBipartidoUtil(i, coloracao)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    private static boolean verificarBipartidoUtil(int vertice, int[] coloracao) {
+        coloracao[vertice] = 1;
+        List<Integer> vizinhos;
+        if (!ehDirecionado) {
+            vizinhos = obterVizinhos(vertice);
+        } else {
+            List<Integer> sucessores = obterSucessores(vertice);
+            List<Integer> predecessores = obterPredecessores(vertice);
+            vizinhos = new ArrayList<>(sucessores);
+            vizinhos.addAll(predecessores);
+        }
+    
+        for (int vizinho : vizinhos) {
+            if (coloracao[vizinho] == -1) {
+                coloracao[vizinho] = 1 - coloracao[vertice];
+                if (!verificarBipartidoUtil(vizinho, coloracao)) {
+                    return false;
+                }
+            } else if (coloracao[vizinho] == coloracao[vertice]) {
                 return false;
             }
         }
         return true;
     }
-
-
 
 
 }
