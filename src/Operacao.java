@@ -37,10 +37,6 @@ public class Operacao {
         }
     }
 
-
-
-    //testar se é bipartido 
-    //sera que da pra comitar 
 }
 
 
