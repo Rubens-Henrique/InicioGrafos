@@ -3,18 +3,18 @@ import java.util.List;
 
 public class ListaAdjacencia {
 
-    private List<List<Integer>> listaAdj; // Lista de adjacência para grafos não direcionados
+    private static List<List<Integer>> listaAdj; // Lista de adjacência para grafos não direcionados
     // Para grafos direcionados
-    private List<List<Integer>> predecessores;
-    private List<List<Integer>> sucessores;
+    private static List<List<Integer>> predecessores;
+    private static List<List<Integer>> sucessores;
 
     private int numVertices;
-    private boolean ehDirecionado;
+    private static boolean ehDirecionado;
 
-    public static void ListaAdjacencia(int numVertices, int tipo) {
+    public ListaAdjacencia(int numVertices, int tipo) {
         this.numVertices = numVertices;
         // Define se o grafo é direcionado ou não baseado no tipo fornecido
-        this.ehDirecionado = (tipo == 1);
+        ehDirecionado = (tipo == 1);
         predecessores = new ArrayList<>();
         sucessores = new ArrayList<>();
         // Inicializa listas de adjacência se o grafo for não direcionado
@@ -33,9 +33,8 @@ public class ListaAdjacencia {
         }
     }
 
-    public void addArestaLista(int v1, int v2, int tipo) {
+    public static void addArestaLista(int v1, int v2) {
         
-        this.ehDirecionado = (tipo == 1);
         // Se o grafo não for direcionado, adiciona também nas listas de adjacência dos vértices
         if (!ehDirecionado) {
             listaAdj.get(v1).add(v2);
@@ -44,7 +43,7 @@ public class ListaAdjacencia {
         // Adiciona v2 como sucessor de v1 e v1 como predecessor de v2
         else {
             sucessores.get(v1).add(v2);
-        predecessores.get(v2).add(v1);
+            predecessores.get(v2).add(v1);
         }
     }
 

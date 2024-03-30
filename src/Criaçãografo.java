@@ -26,7 +26,8 @@ public class Criaçãografo {
 
     System.out.println("Que tipo de grafo deseja montar? Digite : 1- Grafo direcionado , 2- Grafo não direcionado ");
     tipo=sc.nextInt(); 
-    MatrizAdjCriacao grafo = new MatrizAdjCriacao(numeroVertice);
+    MatrizAdjCriacao grafoM = new MatrizAdjCriacao(numeroVertice);
+    ListaAdjacencia grafoL = new ListaAdjacencia(numeroVertice, tipo);
     
 }
 
@@ -47,6 +48,7 @@ public class Criaçãografo {
     origem= Integer.parseInt(vertices[0]);
     destino= Integer.parseInt(vertices[1]);
     MatrizAdjCriacao.addArestaMatriz(origem,destino,tipo);
+    ListaAdjacencia.addArestaLista(origem, destino);
    
 }
 
@@ -67,10 +69,10 @@ public class Criaçãografo {
     //
     for(int i=0;i<quantidadeAresta;i++) 
     {   String[] vertices = pares[i].split(",");
-    origem= Integer.parseInt(vertices[0]);
-    destino= Integer.parseInt(vertices[1]);
-    MatrizAdjCriacao.removerArestaMatriz(origem, destino,tipo);
-}
+        origem= Integer.parseInt(vertices[0]);
+        destino= Integer.parseInt(vertices[1]);
+        MatrizAdjCriacao.removerArestaMatriz(origem, destino,tipo);
+    }
 
     }
     
