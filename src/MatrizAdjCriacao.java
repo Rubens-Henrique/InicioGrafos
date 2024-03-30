@@ -15,7 +15,7 @@ public class MatrizAdjCriacao {
     }
 
     // Adiciona uma aresta à matriz de adjacência
-    public static void addAresta(int origem, int destino, int tipo) {
+    public static void addArestaMatriz(int origem, int destino, int tipo) {
         if (tipo == 1) {
             matrizadj[origem][destino] = 1;
             matrizadj[destino][origem] = 1; // para grafos não direcionados
@@ -25,7 +25,7 @@ public class MatrizAdjCriacao {
     }
 
     // Remove uma aresta da matriz de adjacência
-    public static void removerAresta(int origem, int destino, int tipo) {
+    public static void removerArestaMatriz(int origem, int destino, int tipo) {
         if (tipo == 1) {
             matrizadj[origem][destino] = 0;
             matrizadj[destino][origem] = 0; // para grafos não direcionados

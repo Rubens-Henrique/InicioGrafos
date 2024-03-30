@@ -16,18 +16,13 @@ public class Vertice {
         }
     }
 
-    public void associação(String nomes[],int matrizadj[][] ) { 
-
-
-    }   
-
 
     //Identificação de vizinhança  QQQ
     public void Ident( int numeroVertice, int tipo)
     { 
         int controle=0;
-        for (controle=0;MatrizAdj<numeroVertice;controle ++) {
-            if ( tipo==1 && MatrizAdj[][numeroVertice]==1)   // tipo nao direcionado 
+        for (controle=0;matrizadj<numeroVertice;controle ++) {
+            if ( tipo==1 && matrizadj[numeroVertice][numeroVertice]==1)   // tipo nao direcionado 
             {   System.out.println(" +origem+ é vizinho de +destino" );
             } 
     

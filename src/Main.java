@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class App {
+public class Main {
 
     
     public static void main(String[] args) throws Exception {
@@ -8,7 +8,7 @@ public class App {
         //Variáveis
         int controle=0;
         int direção=0;
-
+        
         //Menu Interface 
 
 
@@ -19,15 +19,17 @@ public class App {
         switch (controle) {
 
 
-            case(1): 
-        
-
+            case(1): { 
+                    Criaçãografo.Criando();
+                    
+            }
             break;
 
             case(2):  
             
+            MatrizAdjCriacao.removerAresta(origem, destino,tipo);
             
-            
+            int verifgrafosimples=Operacao.grafosimples(matrizadj);
             
             
 
