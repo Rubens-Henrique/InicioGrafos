@@ -12,9 +12,11 @@ public class Main {
         //Menu Interface 
 
 
+        Criaçãografo.Criando();
+
         
-        System.out.println("Ola, o que deseja fazer?\n"+ "1- Criar um Grafo \n " + "2- Testar as propriedades de um grafo");
-        controle=sc.nextInt();
+
+        
 
         switch (controle) {
 
@@ -30,11 +32,6 @@ public class Main {
             MatrizAdjCriacao.removerAresta(origem, destino,tipo);
             
             int verifgrafosimples=Operacao.grafosimples(matrizadj);
-            
-            
-
-            
-
 
 
 
