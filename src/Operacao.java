@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class Operacao {
     
   
-
+//Lapidar : Posição da lista. 
+//Lapidar : Deseja continuar duplo na vizinhança 
     public static void operacoes()
  
     {   

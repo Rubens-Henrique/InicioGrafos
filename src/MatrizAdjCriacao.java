@@ -90,10 +90,8 @@ public class MatrizAdjCriacao {
     public static void imprime() {
         Scanner sc = new Scanner(System.in);
     
-        System.out.println("1");
         int numeroVertice = obterNumVertices(); // Correção aqui
         String[] nomes = new String[numeroVertice];
-        System.out.printf("%d", numeroVertice);
         int k = 0;
         while (k < numeroVertice) {
             System.out.printf("Digite o nome do %d vértice, ele será associado ao numero %d", k, k);

@@ -40,19 +40,15 @@ public class Criaçãografo {
         String arestas = sc.nextLine();
         String[] pares = arestas.split("/");
         int quantidadeAresta = pares.length;
-        System.out.printf("%d",quantidadeAresta);
         //variavel 2 
         int origem=0;
         int destino=0;
         // 4,1
         for(int i=0;i<quantidadeAresta;i++) 
         {   
-        System.out.println("Oi . ");
         String[] vertices = pares[i].split(",");
         origem= Integer.parseInt(vertices[0]);
         destino= Integer.parseInt(vertices[1]);
-        System.out.printf("%d",origem);
-        System.out.printf("%d",destino);
         MatrizAdjCriacao.addArestaMatriz(origem-1,destino-1);
         ListaAdjacencia.addArestaLista(origem-1, destino-1);
     
