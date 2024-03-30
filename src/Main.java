@@ -13,7 +13,7 @@ public class Main {
 
 
         Criaçãografo.Criando();
-
+        
         
 
         
@@ -30,7 +30,7 @@ public class Main {
             case(2):  
             
             MatrizAdjCriacao.removerAresta(origem, destino,tipo);
-            
+                
             int verifgrafosimples=Operacao.grafosimples(matrizadj);
 
 
