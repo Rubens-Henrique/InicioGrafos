@@ -45,6 +45,7 @@ public class Criaçãografo {
             origem= Integer.parseInt(vertices[0]);
             destino= Integer.parseInt(vertices[1]);
             MatrizAdjCriacao.addArestaMatriz(origem,destino,tipo); 
+            ListaAdjacencia.addArestaLista(origem, destino);
         }
 
     }
