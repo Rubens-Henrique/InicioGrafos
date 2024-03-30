@@ -84,8 +84,8 @@ public class Operacao {
             case 10: 
                MatrizAdjCriacao.imprime();
 
-                default:
                     break; 
+
             }
             System.out.println("Deseja continuar? Digite 's' ou 'n'");
             r = sc.next().toLowerCase(); // Conver

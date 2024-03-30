@@ -10,7 +10,7 @@ public class MatrizAdjCriacao {
     public MatrizAdjCriacao(int numeroVertice,int tipo) {
         matrizadj = new int[numeroVertice][numeroVertice];
         ehDirecionado = (tipo == 1);
-        
+        this.numeroVertice = numeroVertice;
 
         // Inicializa a matriz com zeros
         for (int i = 0; i < numeroVertice; i++) {
@@ -22,14 +22,14 @@ public class MatrizAdjCriacao {
    public boolean ehDirecionado() {
         return ehDirecionado;
     }
-    public int obterNumVertices() {
+    public static int obterNumVertices() {
         return numeroVertice;
     }
     
 
     // Adiciona uma aresta à matriz de adjacência
     public static void addArestaMatriz(int origem, int destino) {
-        System.out.printf("X %d,  %d\\n",origem,destino);
+
         if ( !ehDirecionado) {
             matrizadj[origem][destino] = 1;
             matrizadj[destino][origem] = 1; // para grafos não direcionados
@@ -89,20 +89,24 @@ public class MatrizAdjCriacao {
     // Imprime a matriz
     public static void imprime() {
         Scanner sc = new Scanner(System.in);
-
-        String []nomes = new String[numeroVertice];
-        int k=0;
-        while (k<numeroVertice) {
-            System.out.printf("Digite o nome do %d vértice , ele será associado ao numero %d",k,k);
-            nomes[k]=sc.nextLine();
-            k++; 
-            
+    
+        System.out.println("1");
+        int numeroVertice = obterNumVertices(); // Correção aqui
+        String[] nomes = new String[numeroVertice];
+        System.out.printf("%d", numeroVertice);
+        int k = 0;
+        while (k < numeroVertice) {
+            System.out.printf("Digite o nome do %d vértice, ele será associado ao numero %d", k, k);
+            nomes[k] = sc.nextLine();
+            k++;
+        }
+    
         System.out.print("      ");
         for (String nome : nomes) {
             System.out.printf("%-7s", nome);
         }
         System.out.println();
-        
+    
         for (int i = 0; i < numeroVertice; i++) {
             System.out.printf("%-7s", nomes[i]);
             for (int j = 0; j < numeroVertice; j++) {
@@ -110,7 +114,5 @@ public class MatrizAdjCriacao {
             }
             System.out.println();
         }
-    }
-}
-
+    } 
 }
