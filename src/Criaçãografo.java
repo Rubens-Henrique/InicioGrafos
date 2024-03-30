@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class Criaçãografo {
     
+    private static int numeroVertice=0;
     
     public static void Criando () {
         Scanner sc = new Scanner(System.in);
 
         //variáveis
         int tipo=0;
-        int numeroVertice=0;
     
         System.out.println("Quantos vértices deseja ter? ");
         numeroVertice=sc.nextInt();
@@ -41,37 +41,37 @@ public class Criaçãografo {
         // 4,1
         for(int i=0;i<quantidadeAresta;i++) 
         {   
-        String[] vertices = pares[i].split(",");
-        origem= Integer.parseInt(vertices[0]);
-        destino= Integer.parseInt(vertices[1]);
-        MatrizAdjCriacao.addArestaMatriz(origem-1,destino-1);
-        ListaAdjacencia.addArestaLista(origem-1, destino-1);
+            String[] vertices = pares[i].split(",");
+            origem= Integer.parseInt(vertices[0]);
+            destino= Integer.parseInt(vertices[1]);
+            MatrizAdjCriacao.addArestaMatriz(origem-1,destino-1);
+            ListaAdjacencia.addArestaLista(origem-1, destino-1);
+        
+        }   
     
-    }   
-    System.out.println("passei no for");
 
-        }
+    }
 //excluindo relações 
    
     public static void excluindorelaçoes() {
 
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-    System.out.printf("Digite os vértices que tem relação entre si: 1,3/4,5/2,4/");
-    String arestas = sc.nextLine().trim();
-    String[] pares = arestas.split("/");
-    int quantidadeAresta = pares.length;
-      //variavel 2 
-      int origem=0;
-      int destino=0;
-    
-    for(int i=0;i<quantidadeAresta;i++) 
-    {   String[] vertices = pares[i].split(",");
-        origem= Integer.parseInt(vertices[0].trim());
-        destino= Integer.parseInt(vertices[1].trim());
-        MatrizAdjCriacao.removerArestaMatriz(origem-1, destino-1);
-        ListaAdjacencia.removerArestaLista(origem-1,destino-1);
-    }
+        System.out.printf("Digite os vértices que tem relação entre si: 1,3/4,5/2,4/");
+        String arestas = sc.nextLine().trim();
+        String[] pares = arestas.split("/");
+        int quantidadeAresta = pares.length;
+        //variavel 2 
+        int origem=0;
+        int destino=0;
+        
+        for(int i=0;i<quantidadeAresta;i++) 
+        {   String[] vertices = pares[i].split(",");
+            origem= Integer.parseInt(vertices[0].trim());
+            destino= Integer.parseInt(vertices[1].trim());
+            MatrizAdjCriacao.removerArestaMatriz(origem-1, destino-1);
+            ListaAdjacencia.removerArestaLista(origem-1,destino-1);
+        }
 
     }
     
