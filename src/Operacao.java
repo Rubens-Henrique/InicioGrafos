@@ -28,9 +28,9 @@ public class Operacao {
             case 3:
                 String resposta = "s";
                 while (resposta.equalsIgnoreCase("s")) { // Ignora a diferença entre maiúsculas e minúsculas
-                    System.out.println("Qual o número do vértice que você deseja conhecer a vizinhança?");
+                    System.out.println("Qual o número do vértice que você deseja conhecer a vizinhança? Considere que a lista começa do 0");
                     vertice = sc.nextInt();
-                    ListaAdjacencia.obterVizinhos(vertice-1);
+                    System.out.println("Vizinhos do vértice " + vertice + ": " +  ListaAdjacencia.obterVizinhos(vertice-1));
                     System.out.println("Deseja continuar? Digite 's' ou 'n'");
                     resposta = sc.next().toLowerCase(); // Converte a resposta para minúsculas
                 }
@@ -40,10 +40,10 @@ public class Operacao {
                 resposta = "s";
                 while (resposta.equalsIgnoreCase("s")) 
                 { // Ignora a diferença entre maiúsculas e minúsculas
-                    System.out.println("Qual o número do vértice que você deseja conhecer  os predecessores e sucessores?");
+                    System.out.println("Qual o número do vértice que você deseja conhecer  os predecessores e sucessores? Considere que a lista começa no 0; ");
                     vertice = sc.nextInt();
-                    ListaAdjacencia.obterPredecessores(vertice-1);
-                    ListaAdjacencia.obterSucessores(vertice-1);
+                    System.out.println("Sucessores do vértice " + vertice + ": " +   ListaAdjacencia.obterSucessores(vertice-1));
+                    System.out.println("Predecessores do vértice " + vertice + ": " +  ListaAdjacencia.obterPredecessores(vertice-1));
                     System.out.println("Deseja continuar? Digite 's' ou 'n'");
                     resposta = sc.next().toLowerCase(); // Converte a resposta para minúsculas
                 }
@@ -55,7 +55,7 @@ public class Operacao {
                 { // Ignora a diferença entre maiúsculas e minúsculas
                     System.out.println("Qual vértice você deseja conhecer o grau  ?");
                     vertice = sc.nextInt();
-                    ListaAdjacencia.obterGrauVertice(vertice-1);
+                    ListaAdjacencia.obterGrauVertice(vertice);
                     System.out.println("Deseja continuar? Digite 's' ou 'n'");
                     resposta = sc.next().toLowerCase(); // Converte a resposta para minúsculas
                 }
@@ -77,10 +77,25 @@ public class Operacao {
 
             case 8:
                ListaAdjacencia.regular();
-            
+               boolean verifgrafoRegular=ListaAdjacencia.regular();
+               if(!verifgrafoRegular)
+               { System.out.println("Não é um grafo regular");
+
+               } else {  System.out.println("É  um grafo regular");
+
+               }
+                break;
             case 9: 
-               ListaAdjacencia.ehBipartido();
+                boolean verifGrafosBipartidos = ListaAdjacencia.ehBipartido();
+                if(!verifGrafosBipartidos)
+                { System.out.println("O grafo é bipartido");
+
+                } else {  System.out.println("O grafo não é bipartido");
+
+                }
             
+                break;
+
             case 10: 
                MatrizAdjCriacao.imprime();
 

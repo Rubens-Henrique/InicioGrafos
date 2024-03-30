@@ -91,14 +91,14 @@ public class ListaAdjacencia {
         }
     }
 
-    public static String regular() {
+    public static boolean regular() {
         int grau = obterGrauVertice(0);
         for (int i = 1; i < numVertices; i++) {
             if (obterGrauVertice(i) != grau) {
-                return ("O grafo não é regular ");
+                return false;
             }
         }
-        return ("O grafo é regular ");
+        return true;
     }
 
     // Método para verificar se o grafo é bipartido
