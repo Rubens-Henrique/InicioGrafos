@@ -33,8 +33,9 @@ public class ListaAdjacencia {
         }
     }
 
-    public void addArestaLista(int v1, int v2) {
+    public static void addArestaLista(int v1, int v2, int tipo) {
         
+        this.ehDirecionado = (tipo == 1);
         // Se o grafo não for direcionado, adiciona também nas listas de adjacência dos vértices
         if (!ehDirecionado) {
             listaAdj.get(v1).add(v2);
