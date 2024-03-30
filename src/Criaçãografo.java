@@ -6,7 +6,6 @@ public class Criaçãografo {
     public static void Criando () {
         Scanner sc = new Scanner(System.in);
 
-
         //variáveis
         int tipo=0;
         int numeroVertice=0;
@@ -18,11 +17,7 @@ public class Criaçãografo {
             numeroVertice=sc.nextInt();  
         }
        
-     
-
-
-
-        System.out.println("Que tipo de grafo deseja montar? Digite : 1- Grafo direcionado , 2- Grafo não direcionado ");
+        System.out.println("Que tipo de grafo deseja montar? Digite: \n(1) Grafo direcionado  \n(2) Grafo não direcionado ");
         tipo=sc.nextInt(); 
         MatrizAdjCriacao grafoM = new MatrizAdjCriacao(numeroVertice,tipo);
         ListaAdjacencia grafoL = new ListaAdjacencia(numeroVertice,tipo);
@@ -36,7 +31,7 @@ public class Criaçãografo {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite as arestas nesse formato :1,3/4,5/2,4/ : ");
+        System.out.println("Digite as arestas nesse formato: 1,3/4,5/2,4/ ");
         String arestas = sc.nextLine();
         String[] pares = arestas.split("/");
         int quantidadeAresta = pares.length;

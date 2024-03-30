@@ -5,16 +5,15 @@ public class Operacao {
     
   
 //Lapidar : Posição da lista. 
-//Lapidar : Deseja continuar duplo na vizinhança 
+
     public static void operacoes()
- 
     {   
         Scanner sc = new Scanner(System.in);
         int controle2=0;
         int vertice=0;
         String r = "s";
         while (r.equalsIgnoreCase("s")) {
-        System.out.println("Qual operação deseja realizar ?  1-Criar mais arestas 2- Remover arestas 3- Vizinhança Vertice (Grafos não direcionados) 4-Identificação dos sucessores e predecessores 5-Identificação do Grau de algum vértice 6- Testar se o grafo é simples 7- Testar se é completo 8- Testar se é regular  9 Testar se é bipartido 10-Imprimir a matriz  ");
+        System.out.println("Qual operação deseja realizar ? \n(1) Criar mais arestas \n(2) Remover arestas \n(3) Vizinhança Vertice (Grafos não direcionados) \n(4) Identificação dos sucessores e predecessores (Grafos direcionados)\n(5) Identificação do grau de algum vértice \n(6) Testar se o grafo é simples \n(7) Testar se o grafo é completo \n(8) Testar se o grafo é regular  \n(9) Testar se o grafo é bipartido \n(10) Imprimir a matriz de adjacencia ");
         controle2=sc.nextInt();
         switch (controle2) {
             case 1:
@@ -27,45 +26,45 @@ public class Operacao {
         
 
             case 3:
-                String resposta = "s";
-                while (resposta.equalsIgnoreCase("s")) { // Ignora a diferença entre maiúsculas e minúsculas
+                int resposta = 1;
+                while (resposta == 1) { // Ignora a diferença entre maiúsculas e minúsculas
                     System.out.println("Qual o número do vértice que você deseja conhecer a vizinhança? Considere que a lista começa do 0");
                     vertice = sc.nextInt();
                     System.out.println("Vizinhos do vértice " + vertice + ": " +  ListaAdjacencia.obterVizinhos(vertice-1));
-                    System.out.println("Deseja continuar? Digite 's' ou 'n'");
-                    resposta = sc.next().toLowerCase(); // Converte a resposta para minúsculas
+                    System.out.println("Escolha o que deseja realizar: \n(1)Conhecer a vizinhança de outro vértice \n(2) Voltar ao menu de operações");
+                    resposta = sc.nextInt();
                 }
                 break;
                 
             case 4: 
-                resposta = "s";
-                while (resposta.equalsIgnoreCase("s")) 
+                resposta = 1;
+                while (resposta == 1) 
                 { // Ignora a diferença entre maiúsculas e minúsculas
-                    System.out.println("Qual o número do vértice que você deseja conhecer  os predecessores e sucessores? Considere que a lista começa no 0; ");
+                    System.out.println("Qual o número do vértice que você deseja conhecer os predecessores e sucessores? Considere que a lista começa no 0; ");
                     vertice = sc.nextInt();
                     System.out.println("Sucessores do vértice " + vertice + ": " +   ListaAdjacencia.obterSucessores(vertice-1));
                     System.out.println("Predecessores do vértice " + vertice + ": " +  ListaAdjacencia.obterPredecessores(vertice-1));
-                    System.out.println("Deseja continuar? Digite 's' ou 'n'");
-                    resposta = sc.next().toLowerCase(); // Converte a resposta para minúsculas
+                    System.out.println("Escolha o que deseja realizar: \n(1)Conhecer os predecessores e sucessores de outro vértice \n(2) Voltar ao menu de operações");
+                    resposta = sc.nextInt();
                 }
                break;
 
             case 5: 
-                resposta = "s";
-                while (resposta.equalsIgnoreCase("s")) 
+                resposta = 1;
+                while (resposta == 1) 
                 { // Ignora a diferença entre maiúsculas e minúsculas
                     System.out.println("Qual vértice você deseja conhecer o grau  ?");
                     vertice = sc.nextInt();
                     ListaAdjacencia.obterGrauVertice(vertice);
-                    System.out.println("Deseja continuar? Digite 's' ou 'n'");
-                    resposta = sc.next().toLowerCase(); // Converte a resposta para minúsculas
+                    System.out.println("Escolha o que deseja realizar: \n(1)Conhecer o grau de outro vértice \n(2) Voltar ao menu de operações");
+                    resposta = sc.nextInt();
                 }
             break;
 
             case 6: 
                boolean verifgrafosimples=MatrizAdjCriacao.grafoSimples();
                if(!verifgrafosimples)
-               { System.out.println("Não é um grafo simples");
+               {    System.out.println("Não é um grafo simples");
 
                } else {  System.out.println("É  um grafo simples");
 
@@ -80,7 +79,7 @@ public class Operacao {
                ListaAdjacencia.regular();
                boolean verifgrafoRegular=ListaAdjacencia.regular();
                if(!verifgrafoRegular)
-               { System.out.println("Não é um grafo regular");
+               {    System.out.println("Não é um grafo regular");
 
                } else {  System.out.println("É  um grafo regular");
 
@@ -103,28 +102,12 @@ public class Operacao {
                     break; 
 
             }
-            System.out.println("Deseja continuar? Digite 's' ou 'n'");
-            r = sc.next().toLowerCase(); // Conver
+            System.out.println("Deseja realizar mais operações? Digite 's' ou 'n'");
+            r = sc.next().toLowerCase(); 
         }
-    
-
-        
-    
-
-
-
-
-
-
-
-
 
      }
   
-
-  
-
-
 }
 
 

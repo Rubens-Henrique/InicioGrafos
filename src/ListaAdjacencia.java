@@ -70,16 +70,32 @@ public class ListaAdjacencia {
     }
 
     public static List<Integer> obterVizinhos(int v) {
-    // Como o grafo não é direcionado, retorna a lista de adjacência do vértice
-        return listaAdj.get(v);
+        // Verifica se o grafo é direcionado
+        if (ehDirecionado) {
+            System.out.println("O grafo é direcionado.");
+            return null; // Retorna null pois o grafo é direcionado
+        }
         
+        // Como o grafo não é direcionado, retorna a lista de adjacência do vértice
+        return listaAdj.get(v);
     }
 
     public static List<Integer> obterPredecessores(int v) {
+        // Verifica se o grafo é direcionado
+        if (!ehDirecionado) {
+            return null; // Retorna null pois o grafo é não direcionado
+        }
+        
         return predecessores.get(v);
     }
 
     public static List<Integer> obterSucessores(int v) {
+        // Verifica se o grafo é direcionado
+        if (!ehDirecionado) {
+            System.out.println("O grafo é não direcionado.");
+            return null; // Retorna null pois o grafo é não direcionado
+        }
+        
         return sucessores.get(v);
     }
 

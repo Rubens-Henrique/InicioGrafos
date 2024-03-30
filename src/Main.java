@@ -17,40 +17,30 @@ public class Main {
 
         Criaçãografo.Criando();
         
-        System.out.println("O que você deseja fazer ?/n Digite : 1- Fazer operações com os grafos / 2- Sair do programa ");
+        System.out.println("O que você deseja fazer? Digite : \n(1) Fazer operações com os grafos \n(2) Sair do programa ");
 
         controle=sc.nextInt();
         
 
         switch (controle) {
 
-
             case(1): 
-                   Operacao.operacoes();
+                Operacao.operacoes();
                     
             
-            break;
+                break;
 
             case(2):  
-             System.out.println("Até logo");
-             System.exit(0);
+                System.out.println("Até logo");
+                System.exit(0);
+                break;
 
+            default:
 
-
-        }
-            
-     
-                
-    
-
-
-
-
-
+            break;
 
         }
+    }      
 
-       
-
-    }
+}
 
