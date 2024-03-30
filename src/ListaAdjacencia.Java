@@ -70,13 +70,9 @@ public class ListaAdjacencia {
     }
 
     public List<Integer> obterVizinhos(int v) {
-        // Se o grafo for direcionado, retorna os sucessores
-        if (ehDirecionado) {
-            return sucessores.get(v);
-        } 
-        else { // Se o grafo for não direcionado, retorna a lista de adjacência
-            return listaAdj.get(v);
-        }
+    // Como o grafo não é direcionado, retorna a lista de adjacência do vértice
+        return listaAdj.get(v);
+        
     }
 
     public List<Integer> obterPredecessores(int v) {
@@ -85,6 +81,14 @@ public class ListaAdjacencia {
 
     public List<Integer> obterSucessores(int v) {
         return sucessores.get(v);
+    }
+
+    public int obterGrauVertice(int v) {
+        if (ehDirecionado) {
+            return predecessores.get(v).size() + sucessores.get(v).size();
+        } else {
+            return listaAdj.get(v).size();
+        }
     }
 
 
