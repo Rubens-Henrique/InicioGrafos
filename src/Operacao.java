@@ -49,17 +49,17 @@ public class Operacao {
                 }
                break;
 
-            case 5: 
-                resposta = 1;
-                while (resposta == 1) 
-                { // Ignora a diferença entre maiúsculas e minúsculas
-                    System.out.println("Qual vértice você deseja conhecer o grau  ?");
-                    vertice = sc.nextInt();
-                    ListaAdjacencia.obterGrauVertice(vertice);
-                    System.out.println("Escolha o que deseja realizar: \n(1)Conhecer o grau de outro vértice \n(2) Voltar ao menu de operações");
-                    resposta = sc.nextInt();
-                }
-            break;
+               case 5: 
+               resposta = 1;
+               while (resposta == 1) 
+               { // Ignora a diferença entre maiúsculas e minúsculas
+                   System.out.println("Qual vértice você deseja conhecer o grau  ?");
+                   vertice = sc.nextInt();
+                   System.out.println("Grau do vérice " + vertice + ": " +   ListaAdjacencia.obterGrauVertice(vertice-1));
+                   System.out.println("Escolha o que deseja realizar: \n(1)Conhecer o grau de outro vértice \n(2) Voltar ao menu de operações");
+                   resposta = sc.nextInt();
+               }
+           break;
 
             case 6: 
                boolean verifgrafosimples=MatrizAdjCriacao.grafoSimples();
