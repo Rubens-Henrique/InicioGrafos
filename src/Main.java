@@ -14,7 +14,6 @@ public class Main {
         
         //Menu Interface 
 
-
         Criaçãografo.Criando();
         
         System.out.println("O que você deseja fazer? Digite : \n(1) Fazer operações com os grafos \n(2) Sair do programa ");

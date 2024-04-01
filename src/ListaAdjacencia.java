@@ -69,7 +69,7 @@ public class ListaAdjacencia {
         return ehDirecionado;
     }
 
-    public static List<Integer> obterVizinhos(int v) {
+    public static List<Integer> obterVizinhosReais(int v) {
         // Verifica se o grafo é direcionado
         if (ehDirecionado) {
             System.out.println("O grafo é direcionado.");
@@ -77,26 +77,34 @@ public class ListaAdjacencia {
         }
         
         // Como o grafo não é direcionado, retorna a lista de adjacência do vértice
-        return listaAdj.get(v);
+        // Obter os valores reais dos vértices, pois a lista começa da posição 0
+        List<Integer> verticesReais = valoresReaisVertices(listaAdj.get(v));
+    
+        // Retorna a lista de vizinhos com os valores reais dos vértices
+        return verticesReais;
     }
 
-    public static List<Integer> obterPredecessores(int v) {
+    public static List<Integer> obterPredecessoresReais(int v) {
         // Verifica se o grafo é direcionado
         if (!ehDirecionado) {
             return null; // Retorna null pois o grafo é não direcionado
         }
         
-        return predecessores.get(v);
+        List<Integer> verticesReais = valoresReaisVertices(predecessores.get(v));
+    
+        // Retorna a lista de vizinhos com os valores reais dos vértices
+        return verticesReais;
     }
 
-    public static List<Integer> obterSucessores(int v) {
+    public static List<Integer> obterSucessoresReais(int v) {
         // Verifica se o grafo é direcionado
         if (!ehDirecionado) {
             System.out.println("O grafo é não direcionado.");
             return null; // Retorna null pois o grafo é não direcionado
         }
         
-        return sucessores.get(v);
+        List<Integer> verticesReais = valoresReaisVertices(sucessores.get(v));
+        return verticesReais;
     }
 
     public static int obterGrauVertice(int v) {
@@ -158,5 +166,24 @@ public class ListaAdjacencia {
         return true;
     }
 
+    public static List<Integer> obterSucessores(int v) {
+        return sucessores.get(v);
+    }
+
+    public static List<Integer> obterPredecessores(int v) {
+        return predecessores.get(v);
+    }
+
+    public static List<Integer> obterVizinhos(int v) {
+        return listaAdj.get(v);
+    }
+
+    public static List<Integer> valoresReaisVertices(List<Integer> vertices) {
+        List<Integer> verticesReais = new ArrayList<>();
+        for (int v : vertices) {
+            verticesReais.add(v + 1); // Adiciona 1 ao valor do vértice
+        }
+        return verticesReais;
+    }
 
 }
