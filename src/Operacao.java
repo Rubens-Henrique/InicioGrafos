@@ -28,7 +28,7 @@ public class Operacao {
             case 3:
                 int resposta = 1;
                 while (resposta == 1) { // Ignora a diferença entre maiúsculas e minúsculas
-                    System.out.println("Qual o número do vértice que você deseja conhecer a vizinhança? Considere que a lista começa do 0");
+                    System.out.println("Qual o número do vértice que você deseja conhecer a vizinhança? ");
                     vertice = sc.nextInt();
                     System.out.println("Vizinhos do vértice " + vertice + ": " +  ListaAdjacencia.obterVizinhosReais(vertice-1));
                     System.out.println("Escolha o que deseja realizar: \n(1)Conhecer a vizinhança de outro vértice \n(2) Voltar ao menu de operações");
@@ -40,7 +40,7 @@ public class Operacao {
                 resposta = 1;
                 while (resposta == 1) 
                 { // Ignora a diferença entre maiúsculas e minúsculas
-                    System.out.println("Qual o número do vértice que você deseja conhecer os predecessores e sucessores? Considere que a lista começa no 0; ");
+                    System.out.println("Qual o número do vértice que você deseja conhecer os predecessores e sucessores?  ");
                     vertice = sc.nextInt();
                     System.out.println("Sucessores do vértice " + vertice + ": " +   ListaAdjacencia.obterSucessoresReais(vertice-1));
                     System.out.println("Predecessores do vértice " + vertice + ": " +  ListaAdjacencia.obterPredecessoresReais(vertice-1));
