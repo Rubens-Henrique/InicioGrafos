@@ -113,48 +113,5 @@ public class MatrizAdjCriacao {
             }
             System.out.println();
         }
-<<<<<<< HEAD
-    }
-    
-    
-    //Faz a busca em largura do grafo
-    public static void largura(int verticeInicial) { 
-        
-=======
-    } 
-        //Faz a busca em largura do grafo
-    public static void largura () { 
->>>>>>> 5ec82a03793ef042442bdb7f7a85feb31719b043
-            int numVertices = matrizadj.length;
-            boolean[] visitados = new boolean[numVertices];
-            
-            Queue<Integer> fila = new LinkedList<>();
-            fila.offer(verticeInicial);
-            visitados[verticeInicial] = true;
-            
-            while (!fila.isEmpty()) {
-                int vertice = fila.poll();
-                System.out.print(vertice + " ");
-                
-                for (int vizinho = 0; vizinho < numVertices; vizinho++) {
-                    if (matrizadj[vertice][vizinho] == 1 && !visitados[vizinho]) {
-                        fila.offer(vizinho);
-                        visitados[vizinho] = true;
-                    }
-                }
-            }
-        }
 
-
-
-
-
-    }
-
-
-
-<<<<<<< HEAD
-=======
-}
-}
->>>>>>> 5ec82a03793ef042442bdb7f7a85feb31719b043
+    } //comparaçãoes
