@@ -14,7 +14,7 @@ public class Operacao {
         String r = "s";
         while (r.equalsIgnoreCase("s")) {
         System.out.println("Qual operação deseja realizar ? \n(1) Criar mais arestas \n(2) Remover arestas \n(3) Vizinhança Vertice (Grafos não direcionados) \n(4) Identificação dos sucessores e predecessores (Grafos direcionados)\n(5) Identificação do grau de algum vértice \n(6) Testar se o grafo é simples \n(7) Testar se o grafo é completo \n(8) Testar se o grafo é regular  \n(9) Testar se o grafo é bipartido \n(10) Imprimir a matriz de adjacencia " + //
-                        "\n (11)  Realizar a busca em largura  \n  (12)  Ordenação Topologica   \n  (13)  Verificar se o grafo é conexo ");
+                        "\n(11) Realizar a busca em largura  \n(12) Ordenação Topologica   \n(13) Verificar se o grafo é conexo  \n(14) Busca em profundidade");
         controle2=sc.nextInt();
         switch (controle2) {
             case 1:
@@ -100,27 +100,32 @@ public class Operacao {
             case 10: 
                MatrizAdjCriacao.imprime();
 
-                    break; 
+                break; 
             
             case 11: 
             
-            System.out.print("Escolha o vértice Inicial que será realziado a busca");
-            int y=sc.nextInt();
-            MatrizAdjCriacao.BuscaLargura(y);
+                System.out.println("Escolha o vértice Inicial que será realizada a busca:");
+                int y=sc.nextInt();
+                MatrizAdjCriacao.BuscaLargura(y);
 
-            break;
+                break;
 
             case 12: 
 
-            MatrizAdjCriacao.OrdenaTop();
-            break;
+                MatrizAdjCriacao.OrdenaTop();
+                break;
 
             case 13:
-             MatrizAdjCriacao.conexo();
-             break;
+                MatrizAdjCriacao.conexo();
+                break;
+
+            case 14:
+            System.out.print("Escolha o vértice Inicial que será realizada a busca: ");
+            vertice = sc.nextInt();
+            ListaAdjacencia.buscaProfundidade(vertice-1);
          
             }
-            System.out.println("Deseja realizar mais operações? Digite 's' ou 'n'");
+            System.out.println("\nDeseja realizar mais operações? Digite 's' ou 'n'");
             r = sc.next().toLowerCase(); 
         }
 

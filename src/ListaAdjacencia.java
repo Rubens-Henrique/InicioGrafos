@@ -33,7 +33,9 @@ public class ListaAdjacencia {
         }
     }
 
-    public static void addArestaLista(int v1, int v2) {
+    public static void addArestaLista(int v1, int v2, int peso) {
+
+        Aresta novaAresta = new Aresta(v1, v2, peso);
         
         // Se o grafo não for direcionado, adiciona também nas listas de adjacência dos vértices
         if (!ehDirecionado) {
@@ -45,9 +47,13 @@ public class ListaAdjacencia {
             sucessores.get(v1).add(v2);
             predecessores.get(v2).add(v1);
         }
+        // Adiciona a nova aresta à lista de arestas da classe Aresta
+        Aresta.adicionarAresta(novaAresta);
     }
 
     public static void removerArestaLista(int v1, int v2) {
+
+        Aresta arestaRemovida = new Aresta(v1, v2);
     
         // Se o grafo não for direcionado, remove também das listas de adjacência dos vértices
         if (!ehDirecionado) {
@@ -59,13 +65,16 @@ public class ListaAdjacencia {
             sucessores.get(v1).remove((Integer) v2);
             predecessores.get(v2).remove((Integer) v1);
         }
+
+        // Remove a aresta da lista de arestas da classe Aresta
+        Aresta.removerAresta(arestaRemovida);
     }
 
-    public int obterNumVertices() {
+    public static int obterNumVertices() {
         return numVertices;
     }
 
-    public boolean ehDirecionado() {
+    public static boolean ehDirecionado() {
         return ehDirecionado;
     }
 
@@ -185,5 +194,39 @@ public class ListaAdjacencia {
         }
         return verticesReais;
     }
+
+    public static void buscaProfundidade(int vertice) {
+        boolean[] visitados = new boolean[ListaAdjacencia.obterNumVertices()];
+        if (ListaAdjacencia.ehDirecionado()) {
+            buscaProfundidadeDirecionado(vertice, visitados);
+        } else {
+            buscaProfundidadeRecursiva(vertice, visitados);
+        }
+    }
+
+    private static void buscaProfundidadeRecursiva(int vertice, boolean[] visitados) {
+        visitados[vertice] = true;
+        System.out.print((vertice + 1) + " "); // Imprime o vértice visitado
+        
+        List<Integer> vizinhos = ListaAdjacencia.obterVizinhos(vertice);
+        for (int vizinho : vizinhos) {
+            if (!visitados[vizinho]) {
+                buscaProfundidadeRecursiva(vizinho, visitados);
+            }
+        }
+    }
+
+    private static void buscaProfundidadeDirecionado(int vertice, boolean[] visitados) {
+        visitados[vertice] = true;
+        System.out.print((vertice + 1) + " "); // Imprime o vértice visitado
+        
+        List<Integer> sucessores = ListaAdjacencia.obterSucessores(vertice);
+        for (int sucessor : sucessores) {
+            if (!visitados[sucessor]) {
+                buscaProfundidadeDirecionado(sucessor, visitados);
+            }
+        }
+    }
+
 
 }
