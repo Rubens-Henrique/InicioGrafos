@@ -32,13 +32,13 @@ public class MatrizAdjCriacao {
     
 
     // Adiciona uma aresta à matriz de adjacência
-    public static void addArestaMatriz(int origem, int destino) {
+    public static void addArestaMatriz(int origem, int destino, int peso) {
 
         if ( !ehDirecionado) {
-            matrizadj[origem][destino] = 1;
-            matrizadj[destino][origem] = 1; // para grafos não direcionados
+            matrizadj[origem][destino] = peso;
+            matrizadj[destino][origem] = peso; // para grafos não direcionados
         } else {
-            matrizadj[origem][destino] = 1; // para grafos direcionados 
+            matrizadj[origem][destino] = peso; // para grafos direcionados 
         }
     }
 
@@ -98,7 +98,7 @@ public class MatrizAdjCriacao {
         String[] nomes = new String[numeroVertice];
         int k = 0;
         while (k < numeroVertice) {
-            System.out.printf("Digite o nome do %d vértice, ele será associado ao numero %d", k, k);
+            System.out.printf("Digite o nome do %d vértice, ele será associado ao numero %d: ", k+1, k+1);
             nomes[k] = sc.nextLine();
             k++;
         }
@@ -218,8 +218,6 @@ public class MatrizAdjCriacao {
                 }
             } 
         }
-
-
         System.out.println();
         }
     }

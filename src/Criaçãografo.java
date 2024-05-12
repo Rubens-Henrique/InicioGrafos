@@ -28,29 +28,34 @@ public class Criaçãografo {
 
 
     public static void formandorelaçoes() {
-
         Scanner sc = new Scanner(System.in);
-
+    
         System.out.println("Digite as arestas nesse formato: 1,3/4,5/2,4/ ");
         String arestas = sc.nextLine();
         String[] pares = arestas.split("/");
         int quantidadeAresta = pares.length;
-        //variavel 2 
-        int origem=0;
-        int destino=0;
-        // 4,1
-        for(int i=0;i<quantidadeAresta;i++) 
-        {   
-            String[] vertices = pares[i].split(",");
-            origem= Integer.parseInt(vertices[0]);
-            destino= Integer.parseInt(vertices[1]);
-            MatrizAdjCriacao.addArestaMatriz(origem-1,destino-1);
-            ListaAdjacencia.addArestaLista(origem-1, destino-1);
-        
-        }   
     
+        int origem, destino;
+        for (int i = 0; i < quantidadeAresta; i++) {
+            String[] vertices = pares[i].split(",");
+            origem = Integer.parseInt(vertices[0]);
+            destino = Integer.parseInt(vertices[1]);
+    
+            System.out.println("Deseja adicionar peso à aresta " + origem + "," + destino + "? (S/N)");
+            char resposta = sc.next().charAt(0);
+    
+            if (resposta == 'S' || resposta == 's') {
+                System.out.println("Digite o peso da aresta " + origem + "," + destino + ":");
+                int peso = sc.nextInt();
+                MatrizAdjCriacao.addArestaMatriz(origem - 1, destino - 1, peso);
+                ListaAdjacencia.addArestaLista(destino - 1, origem - 1, peso);
+            } else {
+                MatrizAdjCriacao.addArestaMatriz(origem - 1, destino - 1, 1);
+                ListaAdjacencia.addArestaLista(origem-1, destino-1, 1);
+            }
+        }
+    } 
 
-    }
 //excluindo relações 
    
     public static void excluindorelaçoes() {
