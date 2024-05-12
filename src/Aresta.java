@@ -45,4 +45,7 @@ public class Aresta {
         this.peso = peso;
     }
     
+    public static List<Aresta> getArestas() {
+        return listaArestas;
+    }
 }

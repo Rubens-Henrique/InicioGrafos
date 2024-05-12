@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class ListaAdjacencia {
 
@@ -227,6 +228,70 @@ public class ListaAdjacencia {
             }
         }
     }
+
+    // Algoritmo de Prim para encontrar a Árvore Geradora Mínima (AGM)
+    public static void primAlgoritmo() {
+        boolean[] visitado = new boolean[numVertices];
+        int[] pai = new int[numVertices];
+        int[] chave = new int[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            chave[i] = Integer.MAX_VALUE;
+            visitado[i] = false;
+        }
+        chave[0] = 0;
+        pai[0] = -1;
+
+        PriorityQueue<Integer> filaPrioridade = new PriorityQueue<>();
+        filaPrioridade.add(0);
+
+        while (!filaPrioridade.isEmpty()) {
+            int u = filaPrioridade.poll();
+            visitado[u] = true;
+
+            List<Integer> vizinhos = new ArrayList<>();
+            if (!ehDirecionado) {
+                vizinhos.addAll(listaAdj.get(u));
+            } else {
+                vizinhos.addAll(sucessores.get(u));
+            }
+            for (int v : vizinhos) {
+                int peso = obterPesoAresta(u, v);
+                if (!visitado[v] && peso < chave[v]) {
+                    pai[v] = u;
+                    chave[v] = peso;
+                    filaPrioridade.add(v);
+                }
+            }
+        }
+
+        // Imprime a AGM
+        System.out.println("Arestas da Árvore Geradora Mínima:");
+        for (int i = 1; i < numVertices; i++) {
+            System.out.println(pai[i] + " - " + i);
+        }
+    }
+
+    public static int obterPesoAresta(int origem, int destino) {
+        if (!ehDirecionado) {
+            // Grafo não direcionado
+            for (Aresta aresta : Aresta.getArestas()) {
+                if ((aresta.getVertice1() == origem && aresta.getVertice2() == destino) ||
+                    (aresta.getVertice1() == destino && aresta.getVertice2() == origem)) {
+                    return aresta.getPeso();
+                }
+            }
+        } else {
+            // Grafo direcionado
+            for (Aresta aresta : Aresta.getArestas()) {
+                if (aresta.getVertice1() == origem && aresta.getVertice2() == destino) {
+                    return aresta.getPeso();
+                }
+            }
+        }
+        // Se não encontrar a aresta, retorna um valor que represente a ausência de conexão
+        return Integer.MAX_VALUE;
+    }
+    
 
 
 }
