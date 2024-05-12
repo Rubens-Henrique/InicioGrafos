@@ -116,7 +116,7 @@ public class Operacao {
                 break;
 
             case 13:
-                MatrizAdjCriacao.conexo();
+                MatrizAdjCriacao.conexo(0);
                 break;
 
             case 14:
