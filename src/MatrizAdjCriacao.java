@@ -210,7 +210,7 @@ public class MatrizAdjCriacao {
             
             // Para cada vértice adjacente ao vértice atual
             for (int i = 0; i < V; i++) {
-                if (matrizadj[vis][i] == 1 && !visitados[i]) {
+                if (matrizadj[vis][i] >= 1 && !visitados[i]) {
                     // Adiciona o vértice adjacente à fila
                     fila.add(i);
                     // Marca o vértice adjacente como visitado
@@ -225,14 +225,50 @@ public class MatrizAdjCriacao {
 }
 
 
-public static void conexo() {
-    int VerticeInicio = 0; // Defina o vértice inicial para a busca em largura
-    int controle = BuscaLargura(VerticeInicio); // Chama a função BuscaLargura e atribui seu retorno à variável controle
-    if (controle > 1) {
-        System.out.println("O grafo é desconexo");
-    } else {
-        System.out.println("O grafo é conexo");
+public static void conexo(int VerticeIniccio) {
+    int V= matrizadj.length;
+    boolean[] visitados = new boolean[V];
+    Queue<Integer> fila = new LinkedList<>();
+    fila.add(VerticeIniccio);
+    
+    int busca=0;
+    for (int Todosvertices=0; Todosvertices<V; Todosvertices++)
+    {  
+        
+        if(!visitados[Todosvertices]) 
+    {   busca++;
+        fila.clear(); // Limpa a fila para uma nova busca em largura
+        fila.add(Todosvertices); // Adiciona o vértice inicial à fila
+        visitados[Todosvertices] = true; // Marca o vértice inicial como visitado
+
+         while (!fila.isEmpty()) {
+        int vis = fila.poll();
+
+
+        // Para cada vértice adjacente ao vértice atual
+        for (int i = 0; i < V; i++) {
+            if (matrizadj[vis][i] >= 1 && !visitados[i]) {
+                // Adiciona o vértice adjacente à fila
+                fila.add(i);
+                // Marca o vértice adjacente como visitado
+                visitados[i] = true;
+            }
+        } 
+    }
+    System.out.println();
     }
 }
+if (busca > 1) {
+    System.out.println("O grafo é desconexo");
+} else {
+    System.out.println("O grafo é conexo");
+}
+}
+
+
+
+
+
+
 
 }
