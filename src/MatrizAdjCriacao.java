@@ -39,7 +39,7 @@ public class MatrizAdjCriacao {
         if ( !ehDirecionado) {
             matrizadj[origem][destino] = peso;
             matrizadj[destino][origem] = peso; // para grafos não direcionados
-            matrizparalela[destino][origem]= matrizparalela[origem][destino]+1;
+            matrizparalela[destino][origem]= matrizparalela[destino][origem]+1;
         } else {
             matrizadj[origem][destino] = peso; // para grafos direcionados 
         }
@@ -50,7 +50,7 @@ public class MatrizAdjCriacao {
         if (!ehDirecionado)  {
             matrizadj[origem][destino] = 0;
             matrizadj[destino][origem] = 0; // para grafos não direcionados
-            matrizparalela[destino][origem]= matrizparalela[origem][destino]-1;
+            matrizparalela[destino][origem]= matrizparalela[destino][origem]-1;
         } else {
             matrizadj[origem][destino] = 0; // para grafos direcionados 
         }
@@ -73,7 +73,7 @@ public class MatrizAdjCriacao {
         } else { // Grafo não direcionado
             for (int i = 0; i < numeroVertice; i++) {
             for (int j=0;j<numeroVertice ;j++)
-            if (matrizparalela[i][j] >1 || (i==j && matrizadj[i][j]!=0)) // Confere se a linha X-X tem laço , ou se percorreu +1x a mesma aresta 
+            if ((matrizparalela[i][j] +matrizparalela[j][i]>1) || (i==j && matrizadj[i][j]!=0)) // Confere se a linha X-X tem laço , ou se percorreu +1x a mesma aresta 
             {  return false; 
             } 
                 } 
@@ -125,11 +125,16 @@ public class MatrizAdjCriacao {
             System.out.printf("%-7s", nome);
         }
         System.out.println();
-    
+        
         for (int i = 0; i < numeroVertice; i++) {
             System.out.printf("%-7s", nomes[i]);
             for (int j = 0; j < numeroVertice; j++) {
-                System.out.printf("%-7d", matrizadj[i][j]);
+                if (!ehDirecionado) {
+                System.out.printf("%-7d", matrizadj[i][j]*(matrizparalela[i][j]+matrizparalela[j][i])); }
+                else { 
+                    System.out.printf("%-7d", matrizadj[i][j]); 
+
+                }
             }
             System.out.println();
         }
