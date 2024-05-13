@@ -140,12 +140,16 @@ public class Operacao {
                     break;
                 }
 
-            System.out.println("\nDeseja realizar mais operações? Digite 's' ou 'n'");
-            r = sc.next().toLowerCase(); 
+      do {  System.out.println("Deseja realizar mais operações? Digite 's' ou 'n'");
+                r = sc.next().toLowerCase();
+    
+                if (!r.equals("s") && !r.equals("n")) {
+                    System.out.println("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.");
+                }
+            } while (!r.equals("s") && !r.equals("n"));
+
+            }
         }
 
      }
   
-}
-
-
