@@ -220,15 +220,16 @@ public class ListaAdjacencia {
     private static void buscaProfundidadeDirecionado(int vertice, boolean[] visitados) {
         visitados[vertice] = true;
     
-        // Recupera os predecessores e os visita antes de imprimir o vértice atual
+        System.out.print((vertice + 1) + " "); // Imprime o vértice visitado
+        
         List<Integer> sucessores = obterSucessores(vertice);
         for (int sucessor : sucessores) {
+            //System.out.println(sucessor);
             if (!visitados[sucessor]) {
                 buscaProfundidadeDirecionado(sucessor, visitados);
             }
         }
     
-        System.out.print((vertice + 1) + " "); // Imprime o vértice visitado
     }
 
     // Algoritmo de Prim para encontrar a Árvore Geradora Mínima (AGM)
