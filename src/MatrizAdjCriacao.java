@@ -50,7 +50,7 @@ public class MatrizAdjCriacao {
         if (!ehDirecionado)  {
             matrizadj[origem][destino] = 0;
             matrizadj[destino][origem] = 0; // para grafos não direcionados
-            matrizparalela[destino][origem]= matrizparalela[destino][origem]-1;
+            matrizparalela[destino][origem]= 0;
         } else {
             matrizadj[origem][destino] = 0; // para grafos direcionados 
         }
