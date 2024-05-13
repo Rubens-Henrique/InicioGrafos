@@ -60,7 +60,7 @@ public class CaminhoMinimo {
         // Após a execução do algoritmo, podemos recuperar o caminho mínimo até o destino
         // através do vetor 'anterior'
         if (anterior[destino] == -1) {
-            System.out.println("Não existe caminho entre " + origem + " e " + destino);
+            System.out.println("Não existe caminho entre " + (origem+1) + " e " + (destino+1));
         } else {
             List<Integer> caminho = new ArrayList<>();
             int atual = destino;
@@ -69,13 +69,8 @@ public class CaminhoMinimo {
                 atual = anterior[atual];
             }
             Collections.reverse(caminho);
-            System.out.println("Caminho mínimo de " + origem + " para " + destino + ": " + caminho);
-    
-            // Imprimir vértices percorridos
-            System.out.println("Vértices percorridos:");
-            for (int vertice : caminho) {
-                System.out.print(vertice + " ");
-            }
+            System.out.println("Caminho mínimo de " + (origem+1) + " para " + (destino+1) + ": " + ListaAdjacencia.valoresReaisVertices(caminho));
+        
             System.out.println();
         }
     }

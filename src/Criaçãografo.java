@@ -48,7 +48,7 @@ public class Criaçãografo {
                 System.out.println("Digite o peso da aresta " + origem + "," + destino + ":");
                 int peso = sc.nextInt();
                 MatrizAdjCriacao.addArestaMatriz(origem - 1, destino - 1, peso);
-                ListaAdjacencia.addArestaLista(destino - 1, origem - 1, peso);
+                ListaAdjacencia.addArestaLista(origem - 1, destino - 1, peso);
             } else {
                 MatrizAdjCriacao.addArestaMatriz(origem - 1, destino - 1, 1);
                 ListaAdjacencia.addArestaLista(origem-1, destino-1, 1);
