@@ -7,12 +7,14 @@ import java.util.Queue;
 public class MatrizAdjCriacao {
     
     private static int[][] matrizadj;
+    private static int[][] matrizparalela;
     private static boolean ehDirecionado;
     private static int numeroVertice;
     // Construtor da classe para inicializar a matriz
 
     public MatrizAdjCriacao(int numeroVertice,int tipo) {
         matrizadj = new int[numeroVertice][numeroVertice];
+        matrizparalela=new int[numeroVertice][numeroVertice];
         ehDirecionado = (tipo == 1);
         this.numeroVertice = numeroVertice;
 
@@ -33,10 +35,11 @@ public class MatrizAdjCriacao {
 
     // Adiciona uma aresta à matriz de adjacência
     public static void addArestaMatriz(int origem, int destino, int peso) {
-
+      
         if ( !ehDirecionado) {
             matrizadj[origem][destino] = peso;
             matrizadj[destino][origem] = peso; // para grafos não direcionados
+            matrizparalela[destino][origem]= matrizparalela[origem][destino]+1;
         } else {
             matrizadj[origem][destino] = peso; // para grafos direcionados 
         }
@@ -47,6 +50,7 @@ public class MatrizAdjCriacao {
         if (!ehDirecionado)  {
             matrizadj[origem][destino] = 0;
             matrizadj[destino][origem] = 0; // para grafos não direcionados
+            matrizparalela[destino][origem]= matrizparalela[origem][destino]-1;
         } else {
             matrizadj[origem][destino] = 0; // para grafos direcionados 
         }
@@ -54,16 +58,29 @@ public class MatrizAdjCriacao {
 
 
     public static boolean grafoSimples() 
-    { int numeroVertice = matrizadj.length;
-        for (int i=0;i<numeroVertice ;i++)
-        {   for (int j=0;j<numeroVertice ;j++)
-            if (matrizadj[i][j]>1 || (i==j && matrizadj[i][i]==1))
-                {  return false; } 
-        } 
-        return true; // Grafo é simples
+    { 
+        int numeroVertice = matrizadj.length;
 
-
+        // Verifica se o grafo é direcionado
+        if (ehDirecionado) {
+            for (int i = 0; i < numeroVertice; i++) {
+                // Confere se a linha X-X tem laço
+                if (matrizadj[i][i] != 0) {
+                    return false;
+                }
+            }
+            return true;
+        } else { // Grafo não direcionado
+            for (int i = 0; i < numeroVertice; i++) {
+            for (int j=0;j<numeroVertice ;j++)
+            if (matrizparalela[i][j] >1 || (i==j && matrizadj[i][j]!=0)) // Confere se a linha X-X tem laço , ou se percorreu +1x a mesma aresta 
+            {  return false; 
+            } 
+                } 
+            return true; // Grafo é simples
+        }
     }
+
 
     public static void grafoCompleto() {
         boolean verifica = grafoSimples();
@@ -71,7 +88,7 @@ public class MatrizAdjCriacao {
             boolean completo = true;
             for (int i = 0; i < matrizadj.length; i++) {
                 for (int j = 0; j < matrizadj[i].length; j++) {
-                    if (i != j && matrizadj[i][j] != 1) {
+                    if (i != j && matrizadj[i][j] == 0) {
                         completo = false;
                         break;
                     }
@@ -91,7 +108,7 @@ public class MatrizAdjCriacao {
     }
 
     // Imprime a matriz
-    public static void imprime() {
+ public static void imprime() {
         Scanner sc = new Scanner(System.in);
     
         int numeroVertice = obterNumVertices(); // Correção aqui
@@ -118,6 +135,7 @@ public class MatrizAdjCriacao {
         }
 
     } 
+
 
 
     //Ordenação Topológica
@@ -157,7 +175,7 @@ public class MatrizAdjCriacao {
 
               // Atualiza os graus de entrada ( tira 1 a cada busca)
               for (int i = 0; i < V; i++) {
-                if (matrizadj[x][i] == 1) {
+                if (matrizadj[x][i] >= 1) {
                     if (--grauentrada[i] == 0) {
                         fila0.add(i);}    }
                   
