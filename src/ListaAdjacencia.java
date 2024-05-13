@@ -270,7 +270,7 @@ public class ListaAdjacencia {
         // Imprime a AGM
         System.out.println("Arestas da Árvore Geradora Mínima:");
         for (int i = 1; i < numVertices; i++) {
-            System.out.println(pai[i] + " - " + i);
+            System.out.println((pai[i]+1) + " - " + (i+1));
         }
     }
 
