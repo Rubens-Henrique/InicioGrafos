@@ -152,7 +152,7 @@ public class MatrizAdjCriacao {
     
 
         Queue<Integer> fila0 = new LinkedList<>(); //fila do grau de entrada 0
-        Queue<Integer> filaoodenacao = new LinkedList<>(); 
+        Queue<Integer> filaorodenacao = new LinkedList<>(); 
 
         if (!ehDirecionado) //Verifica se o grafo é direcionado 
         {   System.out.println("Erro. O grafo é não direcionado !");
@@ -176,7 +176,7 @@ public class MatrizAdjCriacao {
         while(!fila0.isEmpty())
         {  
             int x= fila0.poll();
-            filaoodenacao.add(x);
+            filaorodenacao.add(x);
 
               // Atualiza os graus de entrada ( tira 1 a cada busca)
               for (int i = 0; i < V; i++) {
@@ -187,7 +187,7 @@ public class MatrizAdjCriacao {
                     }
         }
             // Verifica se o grafo possui um ciclo
-            if (filaoodenacao.size() != V ) {
+            if (filaorodenacao.size() != V ) {
                 System.out.println("Erro. O grafo possui um ciclo !");
                 return;
             }
@@ -195,7 +195,7 @@ public class MatrizAdjCriacao {
 
             // Imprime a ordem topológica
             System.out.println("Ordem Topológica:");
-            for (int i : filaoodenacao)
+            for (int i : filaorodenacao)
                 System.out.print(i + " ");
     }
 
