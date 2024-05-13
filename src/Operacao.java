@@ -104,7 +104,7 @@ public class Operacao {
                 
                     System.out.println("Escolha o vértice Inicial que será realizada a busca:");
                     int y=sc.nextInt();
-                    MatrizAdjCriacao.BuscaLargura(y);
+                    MatrizAdjCriacao.BuscaLargura(y-1);
 
                     break;
 
@@ -114,7 +114,7 @@ public class Operacao {
                     break;
 
                 case 13:
-                    MatrizAdjCriacao.conexo(0);
+                    MatrizAdjCriacao.conexo();
                     break;
 
                 case 14:
