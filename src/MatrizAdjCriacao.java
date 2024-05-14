@@ -227,7 +227,7 @@ public class MatrizAdjCriacao {
                 // Imprime o nó atual
                 // Para cada vértice adjacente ao vértice atual
                 for (int i = 0; i < V; i++) {
-                    if (matrizadj[vis][i] >= 1 && !visitados[i]) {
+                    if (matrizadj[vis][i] > 0 && !visitados[i]) {
                         // Adiciona o vértice adjacente à fila
                         fila.add(i);
                         // Marca o vértice adjacente como visitado
