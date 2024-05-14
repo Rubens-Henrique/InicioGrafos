@@ -234,7 +234,7 @@ public class MatrizAdjCriacao {
                         
                     }
                 } 
-                visitados[i] = true;
+              visitados[vis] = true;
             }
         System.out.println();
 }   
