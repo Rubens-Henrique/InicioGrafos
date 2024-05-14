@@ -265,7 +265,7 @@ if(busca>=1 )
                
                 }
             } 
-            visitados[k] = true;
+            visitados[vis] = true;
         }
         System.out.println();
     }
