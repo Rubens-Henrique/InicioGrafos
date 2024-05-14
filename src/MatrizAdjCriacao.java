@@ -231,9 +231,10 @@ public class MatrizAdjCriacao {
                         // Adiciona o vértice adjacente à fila
                         fila.add(i);
                         // Marca o vértice adjacente como visitado
-                        visitados[i] = true;
+                        
                     }
                 } 
+                visitados[i] = true;
             }
         System.out.println();
 }   
@@ -257,13 +258,14 @@ if(busca>=1 )
             
             // Para cada vértice adjacente ao vértice atual
             for (int k = 0; k < V; k++) {
-                if (matrizadj[vis][k] >= 1 && !visitados[k]) {
+                if (matrizadj[vis][k] >0 && !visitados[k]) {
                     // Adiciona o vértice adjacente à fila
                     fila.add(k);
                     // Marca o vértice adjacente como visitado
-                    visitados[k] = true;
+               
                 }
             } 
+            visitados[k] = true;
         }
         System.out.println();
     }
