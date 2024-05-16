@@ -204,74 +204,63 @@ public class MatrizAdjCriacao {
 
 
 
-    //busca em largura 
-    public static void BuscaLargura(int VerticeIniccio) {
-
-    
-        int V= matrizadj.length;
+   public static void BuscaLargura(int VerticeInicio) {
+        int V = matrizadj.length;
         boolean[] visitados = new boolean[V];
         Queue<Integer> fila = new LinkedList<>();
-        
-        int busca=0;
-        int j=VerticeIniccio;
+        int busca = 0;
 
-
-        if (!visitados[VerticeIniccio]) {
+        // Realiza a busca em largura a partir do vértice inicial
+        if (!visitados[VerticeInicio]) {
             busca++;
-            fila.add(j); // Adiciona o vértice inicial à fila
+            fila.add(VerticeInicio); // Adiciona o vértice inicial à fila
             System.out.printf("Busca n%d  :  ", busca);
 
             while (!fila.isEmpty()) {
                 int vis = fila.poll();
-                System.out.print(vis + 1 + " ");
-                // Imprime o nó atual
+                System.out.print(vis + 1 + " "); // Imprime o nó atual
+                visitados[vis] = true;
+
                 // Para cada vértice adjacente ao vértice atual
                 for (int i = 0; i < V; i++) {
                     if (matrizadj[vis][i] > 0 && !visitados[i]) {
                         // Adiciona o vértice adjacente à fila
                         fila.add(i);
                         // Marca o vértice adjacente como visitado
-                        
+                        visitados[i] = true;
                     }
-                } 
-              visitados[vis] = true;
-            }
-        System.out.println();
-}   
- 
-   
-if(busca>=1 )
-{   visitados[VerticeIniccio] = true; // Marca o vértice inicial como visitado
-     for(int i=0;i<V;i++)
-    {  fila.clear(); // Limpa a fila para uma nova busca em largura
-        if(!visitados[i]) 
-        {   
-            busca++;
-            fila.add(i); // Adiciona o vértice inicial à fila
-            visitados[i] = true; // Marca o vértice inicial como visitado
-    
-            System.out.printf("Busca n%d  :  ",busca);
-             while (!fila.isEmpty()) {
-            int vis = fila.poll();
-            // Imprime o nó atual
-            System.out.print(vis+1 + " ");
-            
-            // Para cada vértice adjacente ao vértice atual
-            for (int k = 0; k < V; k++) {
-                if (matrizadj[vis][k] >0 && !visitados[k]) {
-                    // Adiciona o vértice adjacente à fila
-                    fila.add(k);
-                    // Marca o vértice adjacente como visitado
-               
                 }
-            } 
-            visitados[vis] = true;
+            }
+            System.out.println();
         }
-        System.out.println();
+
+        // Realiza a busca em largura para os vértices não visitados
+        for (int i = 0; i < V; i++) {
+            if (!visitados[i]) {
+                busca++;
+                fila.add(i); // Adiciona o vértice inicial à fila
+                visitados[i] = true; // Marca o vértice inicial como visitado
+
+                System.out.printf("Busca n%d  :  ", busca);
+                while (!fila.isEmpty()) {
+                    int vis = fila.poll();
+                    // Imprime o nó atual
+                    System.out.print(vis + 1 + " ");
+                    // Para cada vértice adjacente ao vértice atual
+                    for (int k = 0; k < V; k++) {
+                        if (matrizadj[vis][k] > 0 && !visitados[k]) {
+                            // Adiciona o vértice adjacente à fila
+                            fila.add(k);
+                            // Marca o vértice adjacente como visitado
+                            visitados[k] = true;
+                        }
+                    }
+                }
+                System.out.println();
+            }
+        }
     }
-    }
-}
-    }
+
 public static void conexo() {
     int V= matrizadj.length;
     boolean[] visitados = new boolean[V];
