@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class ListaAdjacencia {
 
@@ -135,42 +137,51 @@ public class ListaAdjacencia {
         return true;
     }
 
-    // Método para verificar se o grafo é bipartido
+  
     public static boolean ehBipartido() {
+      
+
         int[] coloracao = new int[numVertices];
+        boolean[] visitado = new boolean[numVertices];
         for (int i = 0; i < numVertices; i++) {
             coloracao[i] = -1;
+            visitado[i] = false;
         }
+
         for (int i = 0; i < numVertices; i++) {
-            if (coloracao[i] == -1) {
-                if (!verificarBipartidoUtil(i, coloracao)) {
+            if (!visitado[i]) {
+                if (!verificarBipartidoUtil(i, coloracao, visitado)) {
                     return false;
                 }
             }
         }
         return true;
     }
-    
-    private static boolean verificarBipartidoUtil(int vertice, int[] coloracao) {
+
+    private static boolean verificarBipartidoUtil(int vertice, int[] coloracao, boolean[] visitado) {
+        Queue<Integer> fila = new LinkedList<>();
+        fila.offer(vertice);
+        visitado[vertice] = true;
         coloracao[vertice] = 1;
-        List<Integer> vizinhos;
-        if (!ehDirecionado) {
-            vizinhos = obterVizinhos(vertice);
-        } else {
-            List<Integer> sucessores = obterSucessores(vertice);
-            List<Integer> predecessores = obterPredecessores(vertice);
-            vizinhos = new ArrayList<>(sucessores);
-            vizinhos.addAll(predecessores);
-        }
-    
-        for (int vizinho : vizinhos) {
-            if (coloracao[vizinho] == -1) {
-                coloracao[vizinho] = 1 - coloracao[vertice];
-                if (!verificarBipartidoUtil(vizinho, coloracao)) {
+
+        while (!fila.isEmpty()) {
+            int atual = fila.poll();
+            List<Integer> vizinhos = obterVizinhos(atual);
+
+            for (int vizinho : vizinhos) {
+                if (!visitado[vizinho]) {
+                    visitado[vizinho] = true;
+                    coloracao[vizinho] = 1 - coloracao[atual];
+                    fila.offer(vizinho);
+                } else if (coloracao[vizinho] == coloracao[atual]) {
+                    // Se já visitado e possui a mesma cor que o vértice atual, então não é bipartido
                     return false;
                 }
-            } else if (coloracao[vizinho] == coloracao[vertice]) {
-                return false;
+                // Verifica se o vizinho já foi visitado e se a sua cor é igual à cor do vértice atual
+                else if (visitado[vizinho] && coloracao[vizinho] == coloracao[atual]) {
+                    // Se sim, então há um ciclo, e o grafo não pode ser bipartido
+                    return false;
+                }
             }
         }
         return true;
