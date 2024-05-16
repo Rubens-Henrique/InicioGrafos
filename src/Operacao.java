@@ -86,7 +86,7 @@ public class Operacao {
                     break;
                 case 9: 
                     boolean verifGrafosBipartidos = ListaAdjacencia.ehBipartido();
-                    if(!verifGrafosBipartidos)
+                    if(verifGrafosBipartidos)
                     { System.out.println("O grafo é bipartido");
 
                     } else {  System.out.println("O grafo não é bipartido");
